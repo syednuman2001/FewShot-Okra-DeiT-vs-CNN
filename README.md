@@ -66,7 +66,7 @@ This is important because few-shot learning is highly sensitive to:
 # Experimental Protocol
 Epochs: 15
 
-For each model:
+For each model: <br>
  1-shot → 3 independent runs <br>
  5-shot → 3 independent runs <br>
  10-shot → 3 independent runs <br>
@@ -103,11 +103,14 @@ Final results are reported as:
 </p>
 
 ## Stability Graph
-(Stability - Variance Graph.png)
+<p align="center">
+  <img src="Stability - Variance Graph.png" width="700"/>
+</p>
 
 ## Bar Chart Comparison
-(Bar Chart Comparison.png)
-
+<p align="center">
+  <img src="Bar Chart Comparison.png" width="700"/>
+</p>
 
 # Conclusion
 This study shows that transformer-based models such as DeiT:

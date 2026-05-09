@@ -67,15 +67,15 @@ This is important because few-shot learning is highly sensitive to:
 Epochs: 15
 
 For each model:
- 1-shot → 3 independent runs
- 5-shot → 3 independent runs
- 10-shot → 3 independent runs
+ 1-shot → 3 independent runs <br>
+ 5-shot → 3 independent runs <br>
+ 10-shot → 3 independent runs <br>
 
 Results of all 3 few-shots (1,5,10) of Deit model and CNN model with 3 runs.
 
-Deit=> 0.18, 0.446, 0.373 and CNN=> 0.18, 0.13, 0.26 //
-Deit=> 0.23, 0.446, 0.426 and CNN=> 0.16, 0.18, 0.26 //
-Deit=> 0.14, 0.3,   0.58  and CNN=> 0.23, 0.16, 0.13 //
+Deit=> 0.18, 0.446, 0.373 and CNN=> 0.18, 0.13, 0.26 <br>
+Deit=> 0.23, 0.446, 0.426 and CNN=> 0.16, 0.18, 0.26 <br>
+Deit=> 0.14, 0.3,   0.58  and CNN=> 0.23, 0.16, 0.13 <br>
 
 Final results are reported as:
 -> **Average accuracy across 3 runs**

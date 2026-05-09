@@ -73,9 +73,9 @@ For each model:
 
 Results of all 3 few-shots (1,5,10) of Deit model and CNN model with 3 runs.
 
-Deit=> 0.18, 0.446, 0.373 and CNN=> 0.18, 0.13, 0.26
-Deit=> 0.23, 0.446, 0.426 and CNN=> 0.16, 0.18, 0.26
-Deit=> 0.14, 0.3,   0.58  and CNN=> 0.23, 0.16, 0.13
+Deit=> 0.18, 0.446, 0.373 and CNN=> 0.18, 0.13, 0.26 //
+Deit=> 0.23, 0.446, 0.426 and CNN=> 0.16, 0.18, 0.26 //
+Deit=> 0.14, 0.3,   0.58  and CNN=> 0.23, 0.16, 0.13 //
 
 Final results are reported as:
 -> **Average accuracy across 3 runs**
@@ -98,8 +98,9 @@ Final results are reported as:
 
 # Graphs
 ## Few-Shot Accuracy Comparison
-!(Few-Shot Accuracy Comparison Graph.png)
-![Few-Shot Accuracy Comparison Graph](Few-Shot Accuracy Comparison Graph.png)
+<p align="center">
+  <img src="Few-Shot Accuracy Comparison Graph.png" width="700"/>
+</p>
 
 ## Stability Graph
 (Stability - Variance Graph.png)

@@ -99,6 +99,7 @@ Final results are reported as:
 # Graphs
 ## Few-Shot Accuracy Comparison
 !(Few-Shot Accuracy Comparison Graph.png)
+![Few-Shot Accuracy Comparison Graph](Few-Shot Accuracy Comparison Graph.png)
 
 ## Stability Graph
 (Stability - Variance Graph.png)

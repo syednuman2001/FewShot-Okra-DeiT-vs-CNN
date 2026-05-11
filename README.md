@@ -1,137 +1,175 @@
-# FewShot-Okra-DeiT(small)-vs-CNN(ResNet18)
-An efficiency and accuracy comparison between the DeiT vs CNN model on Few-Shot learning.
+# FewShot-Okra-DeiT vs CNN (Fair Experimental Study)
 
-This project investigates **few-shot learning performance** for plant disease classification using:
+This project presents a **fair few-shot learning comparison** between:
 - Vision Transformer (DeiT-small)
 - Convolutional Neural Network (ResNet-18)
 
-The goal is to analyze how well modern deep learning models perform when training data is extremely limited (1-shot, 5-shot, 10-shot scenarios).
+The study focuses on plant disease classification under extremely limited training data (1-shot, 5-shot, 10-shot scenarios) using **identical training strategies for both models**.
 
+---
 
 # Problem Statement
-In real-world agriculture, labeled data is often scarce. This work explores:
 
-How do Vision Transformers compare to CNNs in few-shot plant disease classification tasks?
+In real-world agricultural scenarios, labeled data is often scarce.
 
-We evaluate model performance under extremely limited training samples per class.
+This study investigates:
 
+> How do CNNs and Vision Transformers perform under identical few-shot learning conditions?
+
+Both models are evaluated using the **same partial fine-tuning strategy**, ensuring a fair comparison.
+
+---
 
 # Models Used
-## 1. Vision Transformer
+
+## 1. Vision Transformer (DeiT-small)
 - Pretrained on ImageNet
-- Fine-tuned for few-shot learning
+- Partial fine-tuning (last transformer blocks + classifier head)
 
-## 2. CNN Baseline
+---
+
+## 2. Convolutional Neural Network
 - Pretrained ResNet-18
-- Fully connected layer modified for classification
+- Partial fine-tuning (last residual block + classifier head)
 
+---
 
 # Dataset
-https://data.mendeley.com/datasets/nh7zk4hv8z/1
-- Plant disease dataset (okra leaves)
-- Classes: 6 disease categories
-- Each class contains training, validation, and test images
-- Few-shot sampling applied:
-  - 1-shot
-  - 5-shot
-  - 10-shot
 
+- Plant disease dataset (okra leaves)
+- Source: https://data.mendeley.com/datasets/nh7zk4hv8z/1
+- 6 disease categories
+- Standard train/validation/test split
+
+---
 
 # Experimental Setup
-## Few-Shot Settings:
-- 1 image per class
-- 5 images per class
-- 10 images per class
 
-## Training Strategy:
-- Transfer learning (pretrained models)
-- Data augmentation:
+## Few-Shot Settings
+- 1-shot (1 image per class)
+- 5-shot (5 images per class)
+- 10-shot (10 images per class)
+
+---
+
+## Training Strategy (FAIR COMPARISON)
+
+Both models use:
+
+- Pretrained weights
+- Partial fine-tuning
+- Same augmentation pipeline:
   - rotation
   - flipping
   - color jitter
   - blur
 - Cross-entropy loss
 - AdamW optimizer
+- 15 epochs training
 
+---
 
 # Repeated Experiments (3 Runs per Setting)
-To ensure fair and reliable evaluation, each few-shot setting was trained **three times with different random samples**.
 
-This is important because few-shot learning is highly sensitive to:
-- random selection of training samples
-- initialization effects
-- data augmentation randomness
+To ensure statistical reliability, each experiment is repeated **3 times with different random samples**.
 
+This accounts for:
+- sampling variability
+- initialization randomness
+- augmentation noise
 
-# Experimental Protocol
-Epochs: 15
+---
 
-For each model: <br>
- 1-shot → 3 independent runs <br>
- 5-shot → 3 independent runs <br>
- 10-shot → 3 independent runs <br>
+# Results (3 Runs)
 
-Results of all 3 few-shots (1,5,10) of Deit model and CNN model with 3 runs.
+## DeiT Results
 
-Deit=> 0.18, 0.446, 0.373 and CNN=> 0.18, 0.13, 0.26 <br>
-Deit=> 0.23, 0.446, 0.426 and CNN=> 0.16, 0.18, 0.26 <br>
-Deit=> 0.14, 0.3,   0.58  and CNN=> 0.23, 0.16, 0.13 <br>
+- Run 1: 0.18, 0.45, 0.37  
+- Run 2: 0.23, 0.45, 0.43  
+- Run 3: 0.14, 0.30, 0.58  
 
-Final results are reported as:
--> **Average accuracy across 3 runs**
+---
 
-# Results
-| Few-Shot Setting | DeiT-small Accuracy | CNN-ResNet18 Accuracy |
-|------------------|---------------------|-----------------------|
-| 1-shot           | 0.18                | 0.19                  |
-| 5-shot           | 0.40                | 0.16                  |
-| 10-shot          | 0.46                | 0.22                  |
+## CNN Results
+:contentReference[oaicite:3]{index=3}
 
+- Run 1: 0.29, 0.29, 0.37  
+- Run 2: 0.19, 0.37, 0.57  
+- Run 3: 0.26, 0.42, 0.68  
+
+---
+
+## Final Averaged Results
+
+| Few-Shot Setting | DeiT-small | CNN-ResNet18 |
+|------------------|------------|--------------|
+| 1-shot           | 0.18       | 0.25         |
+| 5-shot           | 0.40       | 0.36         |
+| 10-shot          | 0.46       | 0.54         |
+
+---
 
 # Key Findings
-- CNN and DeiT perform similarly at **extreme low-data (1-shot)**.
-- Vision Transformer significantly outperforms CNN at **5-shot and 10-shot settings**.
-- CNN shows slower improvement with increasing data.
-- Transformer models demonstrate better feature transferability.
-- Some variance observed in transformer performance due to few-shot sampling sensitivity.
 
+- CNN performs better in **extreme low-data (1-shot)** settings
+- DeiT becomes competitive in **mid-range (5-shot) learning**
+- CNN again outperforms DeiT in **10-shot regime**
+- Both models show sensitivity to few-shot sampling
+- Performance depends strongly on dataset characteristics (texture vs global structure)
 
-# Graphs
+---
+
+# Visualizations
+
 ## Few-Shot Accuracy Comparison
 <p align="center">
   <img src="Few-Shot Accuracy Comparison Graph.png" width="700"/>
 </p>
 
-## Stability Graph
-<p align="center">
-  <img src="Stability - Variance Graph.png" width="700"/>
-</p>
+---
 
 ## Bar Chart Comparison
 <p align="center">
   <img src="Bar Chart Comparison.png" width="700"/>
 </p>
 
+---
+
+## Stability / Variance Analysis
+<p align="center">
+  <img src="Stability - Variance Graph.png" width="700"/>
+</p>
+
+---
+
 # Conclusion
-This study shows that transformer-based models such as DeiT:
-- are more effective in low-data regimes
-- outperform CNN baselines in few-shot plant disease classification
-- but exhibit sensitivity to data sampling and training variance
-- 
+
+This study shows that:
+
+- No single architecture dominates all few-shot scenarios
+- CNNs benefit from strong inductive bias in extremely low-data regimes
+- Performance is highly dependent on dataset structure and sampling strategy
+
+---
 
 # Future Work
-- Improve few-shot stability using:
-  - metric learning
-  - prototypical networks
-  - better fine-tuning schedules
-- Extend dataset to more crop diseases
-- Explore hybrid CNN-Transformer architectures
 
+- Metric learning approaches (Prototypical Networks)
+- Self-supervised pretraining
+- Hybrid CNN-Transformer architectures
+- Larger agricultural datasets
+- Bayesian few-shot modeling
+
+---
 
 # Author
-Syed Numan Raza
-Research Project  
-Focus: Computer Vision, Deep Learning, Few-Shot Learning, Agriculture AI
 
-License This project is licensed under the MIT License - see the LICENSE file for details.
-Special thanks to the PyTorch team for providing tools to build and train deep learning models.
+Syed Numan Raza  
+MSc Computer Science (Final Stage)  
+Focus: Deep Learning, Computer Vision, Few-Shot Learning, Agricultural AI  
+
+---
+
+# License
+
+This project is licensed under the MIT License.

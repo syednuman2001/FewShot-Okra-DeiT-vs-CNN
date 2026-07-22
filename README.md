@@ -164,7 +164,7 @@ This study shows that:
 # Author
 
 Syed Numan Raza  
-MSc Computer Science (Final Stage)  
+MSc Computer Science
 Focus: Deep Learning, Computer Vision, Few-Shot Learning, Agricultural AI  
 
 ---

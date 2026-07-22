@@ -91,7 +91,6 @@ This accounts for:
 ---
 
 ## CNN Results
-:contentReference[oaicite:3]{index=3}
 
 - Run 1: 0.29, 0.29, 0.37  
 - Run 2: 0.19, 0.37, 0.57  
